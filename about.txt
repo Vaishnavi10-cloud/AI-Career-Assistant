@@ -1,0 +1,12 @@
+AI resume analyser
+
+python,flask,database-tidb,openai
+
+user login/signup
+dashboard
+
+resume pdf/docs
+uplaod
+
+
+

@@ -1,0 +1,619 @@
+:root {
+    --bg: #F6F3EC;
+    --surface: #FFFFFF;
+    --ink: #1E2A24;
+    --primary: #2F5D50;
+    --primary-dark: #244A40;
+    --accent: #C4622D;
+    --border: #DCD5C4;
+    --muted: #6B716C;
+    --soft: #EFEBE1;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Inter", Arial, sans-serif;
+}
+
+/* ================================
+   GLOBAL
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--serif);
+    color: var(--ink);
+    letter-spacing: -0.025em;
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+p {
+    margin-top: 0;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li {
+    margin-bottom: 9px;
+    color: #39413C;
+}
+
+.container {
+    width: 85%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+main {
+    margin-top: 45px;
+    min-height: calc(100vh - 150px);
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    background: var(--surface);
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+}
+
+.header nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header nav h2 {
+    margin: 0 auto 0 0;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.header nav a {
+    color: var(--ink);
+    font-size: 14px;
+    margin-left: 25px;
+    padding-bottom: 3px;
+    transition: color 0.2s ease;
+}
+
+.header nav a:hover {
+    color: var(--primary);
+}
+
+
+/* ================================
+   TEXT
+================================ */
+
+.sub-text {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+
+/* ================================
+   AUTH PAGES
+================================ */
+
+.auth-container,
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.auth-card {
+    width: 400px;
+    background: var(--surface);
+    padding: 40px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+.auth-card h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 2rem;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 13px 12px;
+    margin-top: 12px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.auth-card input:focus {
+    border-color: var(--primary);
+    outline: 3px solid rgba(47, 93, 80, 0.12);
+}
+
+.auth-links {
+    text-align: right;
+    margin-top: 12px;
+}
+
+.auth-links a {
+    font-size: 13px;
+    color: var(--primary);
+}
+
+.switch-auth {
+    color: var(--muted);
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+
+/* ================================
+   CARDS
+================================ */
+
+.card,
+.dashboard-card,
+.result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+.card {
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    border-color: #C9C0AD;
+    transform: translateY(-2px);
+}
+
+.dashboard-card {
+    max-width: 900px;
+    margin: 0 auto 30px;
+}
+
+.dashboard-card h2 {
+    margin-top: 0;
+    font-size: 2.2rem;
+}
+
+.dashboard-card .sub-text {
+    margin-bottom: 30px;
+}
+
+.result-card {
+    max-width: 900px;
+    margin: 0 auto 45px;
+}
+
+.result-card > h2 {
+    margin-top: 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+label {
+    display: block;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+}
+
+label span {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 13px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 14px;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: var(--primary);
+    outline: 3px solid rgba(47, 93, 80, 0.12);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+input[type="file"] {
+    background: var(--soft);
+    cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #92958F;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+button {
+    margin-top: 24px;
+    padding: 13px 24px;
+    background: var(--primary);
+    color: #FFFFFF;
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+button:focus {
+    outline: 3px solid rgba(47, 93, 80, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* ================================
+   ERROR
+================================ */
+
+.error-message {
+    padding: 14px 16px;
+    margin-bottom: 22px;
+    border-left: 4px solid var(--accent);
+    background: #F8EDE7;
+    color: #71351F;
+    font-size: 14px;
+}
+
+
+/* ================================
+   RESULT SECTIONS
+================================ */
+
+.result-section {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.result-section:last-child {
+    border-bottom: none;
+}
+
+.result-section h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+
+/* ================================
+   RESUME SCORE
+================================ */
+
+.resume-score-section {
+    margin: 28px 0;
+    padding: 30px 25px;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--soft);
+    border-radius: 3px;
+}
+
+.resume-score-section h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.resume-score {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1.1;
+}
+
+
+/* ================================
+   JOB MATCH
+================================ */
+
+.job-match-card {
+    margin-top: 35px;
+    padding-top: 28px;
+    border-top: 3px solid var(--primary);
+}
+
+.job-match-card > h2 {
+    margin-top: 0;
+}
+
+.match-score {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+
+/* ================================
+   DOWNLOAD PDF
+================================ */
+
+.download-report {
+    margin-top: 35px;
+    padding-top: 28px;
+    text-align: center;
+}
+
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 14px 24px;
+
+    background: var(--primary);
+    color: #FFFFFF;
+
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.download-button::before {
+    content: "↓";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.download-button:hover {
+    background: var(--primary-dark);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(30, 42, 36, 0.12);
+}
+
+.download-button:focus {
+    outline: 3px solid rgba(47, 93, 80, 0.25);
+    outline-offset: 3px;
+}
+
+
+/* ================================
+   PROGRESS
+================================ */
+
+.career-progress {
+    margin: 25px 0;
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.career-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.career-progress-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+}
+
+.career-progress-value {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    background: var(--soft);
+    border: 1px solid var(--border);
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+    transition: width 0.5s ease;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+    padding: 25px;
+    text-align: center;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* ================================
+   ACCESSIBILITY
+================================ */
+
+:focus-visible {
+    outline: 3px solid rgba(47, 93, 80, 0.3);
+    outline-offset: 2px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 92%;
+    }
+
+    main {
+        margin-top: 25px;
+    }
+
+    .header {
+        padding: 15px 0;
+    }
+
+    .header nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .header nav h2 {
+        width: 100%;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .header nav a {
+        margin-left: 0;
+        margin-right: 16px;
+    }
+
+    .auth-card {
+        width: 100%;
+        padding: 30px 25px;
+    }
+
+    .dashboard-card,
+    .result-card,
+    .card {
+        padding: 22px;
+    }
+
+    .dashboard-card h2 {
+        font-size: 1.9rem;
+    }
+
+    .resume-score {
+        font-size: 40px;
+    }
+
+    .match-score {
+        font-size: 36px;
+    }
+
+    .download-button {
+        width: 100%;
+    }
+
+    .career-progress-header {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}

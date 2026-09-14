@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-card">
+
+    <h2>AI Resume Analyzer</h2>
+
+    <p class="sub-text">
+        Upload or paste your resume and enter your target career role.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>Target Career Role</label>
+
+        <input
+            type="text"
+            name="role"
+            placeholder="e.g. Java Developer"
+            required
+        >
+
+        <label>Resume</label>
+
+        <textarea
+            name="resume"
+            placeholder="Paste your resume here..."
+            rows="10"
+        ></textarea>
+
+        <p>OR upload your resume:</p>
+
+        <input
+            type="file"
+            name="file"
+            accept=".pdf,.docx"
+        >
+
+        <label>Job Description <span>(Optional)</span></label>
+
+        <textarea
+            name="job_description"
+            placeholder="Paste the job description here to check how well your resume matches the job..."
+            rows="8"
+        ></textarea>
+
+        <button type="submit">
+            Analyze Resume
+        </button>
+
+    </form>
+
+</div>
+
+
+{% if result %}
+
+<div class="result-card">
+
+    {% if result.get("error") %}
+
+        <div class="error-message">
+            {{ result.get("error") }}
+        </div>
+
+    {% endif %}
+
+
+    <h2>Resume Analysis</h2>
+
+    <div class="resume-score-section">
+
+    <h3>Resume Strength Score</h3>
+
+    <div class="resume-score">
+        {{ result.get("resume_score", 0) }}/100
+    </div>
+
+    </div>
+
+
+    <div class="result-section">
+
+        <h3>Skills</h3>
+
+        <ul>
+
+            {% for skill in result.get("skills", []) %}
+
+                <li>{{ skill }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+
+    <div class="result-section">
+
+        <h3>Missing Skills</h3>
+
+        <ul>
+
+            {% for skill in result.get("missing_skills", []) %}
+
+                <li>{{ skill }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+
+    <div class="result-section">
+
+        <h3>Roadmap</h3>
+
+        <ol>
+
+            {% for step in result.get("roadmap", []) %}
+
+                <li>{{ step }}</li>
+
+            {% endfor %}
+
+        </ol>
+
+    </div>
+
+
+    <div class="result-section">
+
+        <h3>Interview Questions</h3>
+
+        <ol>
+
+            {% for question in result.get("interview_questions", []) %}
+
+                <li>{{ question }}</li>
+
+            {% endfor %}
+
+        </ol>
+
+    </div>
+
+    <div class="result-section">
+
+    <h3>How to Improve Your Resume</h3>
+
+    <ul>
+
+        {% for improvement in result.get("resume_improvements", []) %}
+
+            <li>{{ improvement }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+    </div>
+
+    <div class="result-section">
+
+    <h3>Recruiter Action Plan</h3>
+
+    <ol>
+        {% for action in result.get("recruiter_action_plan", []) %}
+            <li>{{ action }}</li>
+        {% endfor %}
+    </ol>
+
+    </div>
+
+
+    {% if result.get("job_match_score") is not none %}
+
+    <div class="job-match-card">
+
+        <h2>Job Match Analysis</h2>
+
+        <div class="result-section">
+
+            <h3>Job Match Score</h3>
+
+            <div class="match-score">
+                {{ result.get("job_match_score") }}%
+            </div>
+
+        </div>
+
+
+        <div class="result-section">
+
+            <h3>Matching Skills</h3>
+
+            <ul>
+
+                {% for skill in result.get("matching_skills", []) %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <div class="result-section">
+
+            <h3>Missing Job Skills</h3>
+
+            <ul>
+
+                {% for skill in result.get("missing_job_skills", []) %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <div class="result-section">
+
+            <h3>Missing Keywords</h3>
+
+            <ul>
+
+                {% for keyword in result.get("missing_keywords", []) %}
+
+                    <li>{{ keyword }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <div class="download-report">
+        <a href="/download-report" class="download-button">
+            Download Analysis as PDF
+        </a>
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
