@@ -1,0 +1,10 @@
+Flask
+SQLAlchemy
+PyMySQL
+python-dotenv
+openai
+pypdf
+python-docx
+pytesseract
+pdf2image
+reportlab
